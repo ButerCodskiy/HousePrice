@@ -23,7 +23,6 @@ data/*.xlsx
 data/*.zip
 data/*.json
 data/*.feather
-models/*.pkl
 models/*.joblib
 models/*.bin
 
