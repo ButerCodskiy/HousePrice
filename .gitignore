@@ -17,7 +17,6 @@ venv/
 .jupyter/
 
 # Data & models
-data/*.csv
 data/*.parquet
 data/*.xlsx
 data/*.zip
