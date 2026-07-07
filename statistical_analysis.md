@@ -5,303 +5,301 @@
 ## 1. Топ-20 самых значимых предикторов
 Отсортированы по t-статистике (надежности влияния на цену). Коэффициенты стандартизированных числовых признаков показывают изменение лог-цены при изменении признака на 1 стандартное отклонение.
 
-|                                  |   Коэффициент |   Std Err (HC3) |   t-статистика |     p-value |
-|:---------------------------------|--------------:|----------------:|---------------:|------------:|
-| room_type_Private room           |    -0.698554  |      0.00432699 |      -161.441  | 0           |
-| room_type_Shared room            |    -1.06729   |      0.0173628  |       -61.4698 | 0           |
-| availability_365                 |     0.096133  |      0.00249711 |        38.4977 | 0           |
-| neighbourhood_Breezy Point       |     1.33821   |      0.0740468  |        18.0725 | 5.25129e-73 |
-| center_distance                  |    -0.21783   |      0.0121991  |       -17.8562 | 2.58486e-71 |
-| year                             |    -0.0599464 |      0.00344885 |       -17.3816 | 1.13781e-67 |
-| neighbourhood_Ridgewood          |    -0.553324  |      0.0319778  |       -17.3034 | 4.43566e-67 |
-| neighbourhood_Midtown            |     0.273049  |      0.0170634  |        16.0021 | 1.23565e-57 |
-| neighbourhood_Sunnyside          |    -0.496755  |      0.0331464  |       -14.9867 | 8.97251e-51 |
-| neighbourhood_Maspeth            |    -0.550382  |      0.0422374  |       -13.0307 | 8.18733e-39 |
-| neighbourhood_Woodside           |    -0.43444   |      0.0364427  |       -11.9212 | 9.18084e-33 |
-| neighbourhood_Corona             |    -0.53185   |      0.0459466  |       -11.5754 | 5.49208e-31 |
-| neighbourhood_Astoria            |    -0.321083  |      0.0277943  |       -11.5521 | 7.20236e-31 |
-| neighbourhood_Lower East Side    |    -0.216772  |      0.019221   |       -11.2779 | 1.68738e-29 |
-| neighbourhood_Bedford-Stuyvesant |    -0.167526  |      0.0149162  |       -11.2311 | 2.86775e-29 |
-| neighbourhood_Bushwick           |    -0.161112  |      0.0144512  |       -11.1487 | 7.26672e-29 |
-| neighbourhood_Chinatown          |    -0.265835  |      0.0241094  |       -11.0262 | 2.85773e-28 |
-| neighbourhood_Borough Park       |    -0.307497  |      0.0278915  |       -11.0248 | 2.90316e-28 |
-| neighbourhood_Woodhaven          |    -0.473057  |      0.0440652  |       -10.7354 | 6.94248e-27 |
-| neighbourhood_Jackson Heights    |    -0.3517    |      0.0329264  |       -10.6814 | 1.24363e-26 |
+|                                  |   Коэффициент |   Std Err (HC3) |   t-статистика |      p-value |
+|:---------------------------------|--------------:|----------------:|---------------:|-------------:|
+| room_type_Private room           |    -0.679478  |      0.00405397 |      -167.608  | 0            |
+| room_type_Shared room            |    -1.04763   |      0.0163084  |       -64.2387 | 0            |
+| availability_365                 |     0.0812964 |      0.00227439 |        35.7442 | 8.13538e-280 |
+| center_distance                  |    -0.210242  |      0.0114834  |       -18.3083 | 7.10348e-75  |
+| neighbourhood_Ridgewood          |    -0.536292  |      0.0309088  |       -17.3508 | 1.94613e-67  |
+| neighbourhood_Breezy Point       |     1.33415   |      0.0781808  |        17.065  | 2.70499e-65  |
+| year                             |    -0.0513135 |      0.00317131 |       -16.1805 | 6.92229e-59  |
+| neighbourhood_Sunnyside          |    -0.483222  |      0.0317402  |       -15.2243 | 2.44096e-52  |
+| neighbourhood_Midtown            |     0.20772   |      0.0152775  |        13.5965 | 4.20113e-42  |
+| neighbourhood_Maspeth            |    -0.525444  |      0.0415342  |       -12.6509 | 1.10624e-36  |
+| neighbourhood_East Elmhurst      |    -0.361909  |      0.0299171  |       -12.0971 | 1.09435e-33  |
+| neighbourhood_Woodside           |    -0.422508  |      0.0358447  |       -11.7872 | 4.54525e-32  |
+| neighbourhood_Astoria            |    -0.3087    |      0.0266507  |       -11.5832 | 5.01438e-31  |
+| neighbourhood_Bedford-Stuyvesant |    -0.166466  |      0.0145458  |       -11.4443 | 2.51088e-30  |
+| neighbourhood_Corona             |    -0.51342   |      0.0457243  |       -11.2286 | 2.95116e-29  |
+| neighbourhood_Bushwick           |    -0.158473  |      0.0142382  |       -11.1301 | 8.95009e-29  |
+| neighbourhood_Lower East Side    |    -0.195921  |      0.0179846  |       -10.8938 | 1.23324e-27  |
+| neighbourhood_Borough Park       |    -0.295006  |      0.0276946  |       -10.6521 | 1.70445e-26  |
+| neighbourhood_Hell's Kitchen     |     0.128551  |      0.0121222  |        10.6046 | 2.83598e-26  |
+| neighbourhood_Chinatown          |    -0.237178  |      0.02262    |       -10.4853 | 1.00927e-25  |
 
 ## 2. Анализ Мультиколлинеарности (VIF)
 Значение VIF > 10 указывает на сильную мультиколлинеарность. В нашей числовой выборке:
 
 | Feature                        |     VIF |
 |:-------------------------------|--------:|
-| minimum_nights                 | 1.06009 |
-| number_of_reviews              | 1.56862 |
-| reviews_per_month              | 1.51724 |
-| calculated_host_listings_count | 1.11159 |
-| availability_365               | 1.15089 |
-| center_distance                | 1.05302 |
-| year                           | 2.7332  |
-| month                          | 2.64081 |
+| minimum_nights                 | 1.06043 |
+| number_of_reviews              | 1.57184 |
+| reviews_per_month              | 1.52023 |
+| calculated_host_listings_count | 1.11266 |
+| availability_365               | 1.15627 |
+| center_distance                | 1.05559 |
+| year                           | 2.71253 |
+| month                          | 2.62083 |
 
 ## 3. Полный лог регрессии (с поправками HC3)
 ```text
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                      y   R-squared:                       0.577
-Model:                            OLS   Adj. R-squared:                  0.575
-Method:                 Least Squares   F-statistic:                     310.5
+Dep. Variable:                      y   R-squared:                       0.593
+Model:                            OLS   Adj. R-squared:                  0.591
+Method:                 Least Squares   F-statistic:                     333.9
 Date:                Tue, 07 Jul 2026   Prob (F-statistic):               0.00
-Time:                        08:16:25   Log-Likelihood:                -28039.
-No. Observations:               48645   AIC:                         5.654e+04
-Df Residuals:                   48414   BIC:                         5.857e+04
-Df Model:                         230                                         
+Time:                        09:04:12   Log-Likelihood:                -23693.
+No. Observations:               47840   AIC:                         4.784e+04
+Df Residuals:                   47611   BIC:                         4.985e+04
+Df Model:                         228                                         
 Covariance Type:                  HC3                                         
 ============================================================================================================
                                                coef    std err          z      P>|z|      [0.025      0.975]
 ------------------------------------------------------------------------------------------------------------
-const                                        5.3385      0.090     59.455      0.000       5.163       5.515
-minimum_nights                              -0.0511      0.007     -6.849      0.000      -0.066      -0.036
-number_of_reviews                           -0.0207      0.002    -10.162      0.000      -0.025      -0.017
-reviews_per_month                            0.0080      0.002      3.343      0.001       0.003       0.013
-calculated_host_listings_count              -0.0160      0.002     -6.943      0.000      -0.021      -0.011
-availability_365                             0.0961      0.002     38.498      0.000       0.091       0.101
-center_distance                             -0.2178      0.012    -17.856      0.000      -0.242      -0.194
-year                                        -0.0599      0.003    -17.382      0.000      -0.067      -0.053
-month                                        0.0254      0.003      7.915      0.000       0.019       0.032
-neighbourhood_group_Brooklyn                -0.3755      0.088     -4.260      0.000      -0.548      -0.203
-neighbourhood_group_Manhattan               -0.1423      0.090     -1.583      0.113      -0.318       0.034
-neighbourhood_group_Queens                  -0.0441      0.082     -0.537      0.591      -0.205       0.117
-neighbourhood_group_Staten Island           -0.1282      0.114     -1.127      0.260      -0.351       0.095
-neighbourhood_Arden Heights                 -0.0355      0.104     -0.342      0.732      -0.239       0.168
-neighbourhood_Arrochar                      -0.2320      0.154     -1.507      0.132      -0.534       0.070
-neighbourhood_Arverne                        0.4465      0.064      6.970      0.000       0.321       0.572
-neighbourhood_Astoria                       -0.3211      0.028    -11.552      0.000      -0.376      -0.267
-neighbourhood_Bath Beach                    -0.0814      0.070     -1.164      0.244      -0.219       0.056
-neighbourhood_Battery Park City             -0.0536      0.070     -0.768      0.442      -0.190       0.083
-neighbourhood_Bay Ridge                     -0.0758      0.041     -1.867      0.062      -0.155       0.004
-neighbourhood_Bay Terrace                    0.4347      0.133      3.257      0.001       0.173       0.696
-neighbourhood_Bay Terrace, Staten Island     0.0909      0.641      0.142      0.887      -1.165       1.347
-neighbourhood_Baychester                     0.0666      0.122      0.546      0.585      -0.172       0.306
-neighbourhood_Bayside                        0.0865      0.077      1.126      0.260      -0.064       0.237
-neighbourhood_Bayswater                      0.2589      0.079      3.295      0.001       0.105       0.413
-neighbourhood_Bedford-Stuyvesant            -0.1675      0.015    -11.231      0.000      -0.197      -0.138
-neighbourhood_Belle Harbor                   0.5252      0.227      2.310      0.021       0.080       0.971
-neighbourhood_Bellerose                      0.4197      0.129      3.253      0.001       0.167       0.673
-neighbourhood_Belmont                       -0.1313      0.145     -0.908      0.364      -0.415       0.152
-neighbourhood_Bensonhurst                   -0.1372      0.046     -2.986      0.003      -0.227      -0.047
-neighbourhood_Bergen Beach                   0.0169      0.150      0.113      0.910      -0.277       0.311
-neighbourhood_Boerum Hill                    0.0422      0.036      1.178      0.239      -0.028       0.112
-neighbourhood_Borough Park                  -0.3075      0.028    -11.025      0.000      -0.362      -0.253
-neighbourhood_Breezy Point                   1.3382      0.074     18.072      0.000       1.193       1.483
-neighbourhood_Briarwood                     -0.0333      0.079     -0.422      0.673      -0.188       0.122
-neighbourhood_Brighton Beach                 0.2077      0.047      4.442      0.000       0.116       0.299
-neighbourhood_Bronxdale                     -0.3605      0.096     -3.760      0.000      -0.548      -0.173
-neighbourhood_Brooklyn Heights               0.0453      0.043      1.057      0.291      -0.039       0.129
-neighbourhood_Brownsville                   -0.1630      0.046     -3.574      0.000      -0.252      -0.074
-neighbourhood_Bull's Head                   -0.2254      0.138     -1.638      0.101      -0.495       0.044
-neighbourhood_Bushwick                      -0.1611      0.014    -11.149      0.000      -0.189      -0.133
-neighbourhood_Cambria Heights                0.2340      0.093      2.523      0.012       0.052       0.416
-neighbourhood_Canarsie                      -0.0003      0.040     -0.009      0.993      -0.080       0.079
-neighbourhood_Carroll Gardens                0.0327      0.033      0.986      0.324      -0.032       0.098
-neighbourhood_Castle Hill                   -0.5120      0.104     -4.931      0.000      -0.716      -0.309
-neighbourhood_Castleton Corners              0.0832      0.438      0.190      0.849      -0.775       0.942
-neighbourhood_Chelsea                        0.0659      0.017      3.945      0.000       0.033       0.099
-neighbourhood_Chinatown                     -0.2658      0.024    -11.026      0.000      -0.313      -0.219
-neighbourhood_City Island                    0.4323      0.180      2.406      0.016       0.080       0.784
-neighbourhood_Civic Center                  -0.2235      0.069     -3.258      0.001      -0.358      -0.089
-neighbourhood_Claremont Village             -0.1794      0.123     -1.461      0.144      -0.420       0.061
-neighbourhood_Clason Point                  -0.0596      0.144     -0.415      0.678      -0.341       0.222
-neighbourhood_Clifton                       -0.2293      0.175     -1.307      0.191      -0.573       0.114
-neighbourhood_Clinton Hill                3.119e-05      0.025      0.001      0.999      -0.049       0.049
-neighbourhood_Co-op City                     0.2981      0.082      3.632      0.000       0.137       0.459
-neighbourhood_Cobble Hill                    0.1090      0.050      2.169      0.030       0.011       0.207
-neighbourhood_College Point                 -0.2811      0.099     -2.852      0.004      -0.474      -0.088
-neighbourhood_Columbia St                   -0.1257      0.054     -2.330      0.020      -0.232      -0.020
-neighbourhood_Concord                       -0.4811      0.118     -4.079      0.000      -0.712      -0.250
-neighbourhood_Concourse                     -0.2954      0.100     -2.961      0.003      -0.491      -0.100
-neighbourhood_Concourse Village             -0.2678      0.101     -2.653      0.008      -0.466      -0.070
-neighbourhood_Coney Island                   0.2998      0.138      2.177      0.029       0.030       0.570
-neighbourhood_Corona                        -0.5319      0.046    -11.575      0.000      -0.622      -0.442
-neighbourhood_Crown Heights                 -0.1222      0.017     -7.274      0.000      -0.155      -0.089
-neighbourhood_Cypress Hills                 -0.1050      0.043     -2.465      0.014      -0.188      -0.022
-neighbourhood_DUMBO                          0.2186      0.069      3.180      0.001       0.084       0.353
-neighbourhood_Ditmars Steinway              -0.3071      0.032     -9.717      0.000      -0.369      -0.245
-neighbourhood_Dongan Hills                  -0.2123      0.164     -1.296      0.195      -0.533       0.109
-neighbourhood_Douglaston                     0.1579      0.111      1.426      0.154      -0.059       0.375
-neighbourhood_Downtown Brooklyn             -0.0021      0.045     -0.047      0.963      -0.090       0.086
-neighbourhood_Dyker Heights                 -0.1447      0.133     -1.090      0.276      -0.405       0.115
-neighbourhood_East Elmhurst                 -0.3528      0.033    -10.589      0.000      -0.418      -0.287
-neighbourhood_East Flatbush                 -0.1533      0.023     -6.535      0.000      -0.199      -0.107
-neighbourhood_East Harlem                    0.0310      0.019      1.591      0.112      -0.007       0.069
-neighbourhood_East Morrisania               -0.0187      0.179     -0.105      0.916      -0.369       0.331
-neighbourhood_East New York                 -0.1032      0.033     -3.146      0.002      -0.167      -0.039
-neighbourhood_East Village                  -0.1333      0.015     -8.676      0.000      -0.163      -0.103
-neighbourhood_Eastchester                    0.3592      0.146      2.463      0.014       0.073       0.645
-neighbourhood_Edenwald                       0.1087      0.149      0.730      0.465      -0.183       0.401
-neighbourhood_Edgemere                       0.1785      0.159      1.120      0.263      -0.134       0.491
-neighbourhood_Elmhurst                      -0.3815      0.036    -10.538      0.000      -0.452      -0.311
-neighbourhood_Eltingville                    0.3734      0.548      0.681      0.496      -0.700       1.447
-neighbourhood_Emerson Hill                  -0.2036      0.267     -0.761      0.446      -0.728       0.321
-neighbourhood_Far Rockaway                   0.4369      0.146      3.001      0.003       0.152       0.722
-neighbourhood_Fieldston                      0.1098      0.124      0.884      0.377      -0.134       0.353
-neighbourhood_Financial District            -0.0947      0.023     -4.136      0.000      -0.140      -0.050
-neighbourhood_Flatbush                      -0.1537      0.021     -7.279      0.000      -0.195      -0.112
-neighbourhood_Flatiron District              0.1802      0.052      3.481      0.000       0.079       0.282
-neighbourhood_Flatlands                      0.0206      0.056      0.370      0.711      -0.089       0.130
-neighbourhood_Flushing                      -0.0587      0.026     -2.274      0.023      -0.109      -0.008
-neighbourhood_Fordham                       -0.1104      0.095     -1.161      0.246      -0.297       0.076
-neighbourhood_Forest Hills                  -0.1304      0.045     -2.872      0.004      -0.219      -0.041
-neighbourhood_Fort Greene                   -0.0196      0.025     -0.776      0.438      -0.069       0.030
-neighbourhood_Fort Hamilton                 -0.0392      0.052     -0.759      0.448      -0.140       0.062
-neighbourhood_Fort Wadsworth                 1.5098      0.442      3.418      0.001       0.644       2.376
-neighbourhood_Fresh Meadows                  0.0181      0.087      0.208      0.835      -0.152       0.188
-neighbourhood_Glendale                      -0.5039      0.064     -7.858      0.000      -0.630      -0.378
-neighbourhood_Gowanus                        0.0554      0.031      1.768      0.077      -0.006       0.117
-neighbourhood_Gramercy                      -0.0588      0.024     -2.410      0.016      -0.107      -0.011
-neighbourhood_Graniteville                  -0.5219      0.341     -1.530      0.126      -1.190       0.146
-neighbourhood_Grant City                    -0.6193      0.113     -5.486      0.000      -0.841      -0.398
-neighbourhood_Gravesend                     -0.0247      0.052     -0.478      0.632      -0.126       0.076
-neighbourhood_Great Kills                    0.2872      0.239      1.200      0.230      -0.182       0.756
-neighbourhood_Greenpoint                     0.0080      0.020      0.407      0.684      -0.030       0.046
-neighbourhood_Greenwich Village              0.0142      0.025      0.560      0.576      -0.036       0.064
-neighbourhood_Grymes Hill                    0.1182      0.169      0.698      0.485      -0.214       0.450
-neighbourhood_Harlem                         0.0500      0.021      2.337      0.019       0.008       0.092
-neighbourhood_Hell's Kitchen                 0.1187      0.013      9.177      0.000       0.093       0.144
-neighbourhood_Highbridge                    -0.3327      0.129     -2.586      0.010      -0.585      -0.081
-neighbourhood_Hollis                         0.2068      0.108      1.917      0.055      -0.005       0.418
-neighbourhood_Holliswood                     0.7439      0.289      2.577      0.010       0.178       1.310
-neighbourhood_Howard Beach                  -0.1237      0.096     -1.294      0.196      -0.311       0.064
-neighbourhood_Howland Hook                  -0.2246      0.164     -1.371      0.170      -0.546       0.096
-neighbourhood_Huguenot                       0.2240      0.360      0.623      0.534      -0.481       0.929
-neighbourhood_Hunts Point                   -0.5231      0.102     -5.146      0.000      -0.722      -0.324
-neighbourhood_Inwood                         0.1171      0.042      2.793      0.005       0.035       0.199
-neighbourhood_Jackson Heights               -0.3517      0.033    -10.681      0.000      -0.416      -0.287
-neighbourhood_Jamaica                        0.0084      0.038      0.219      0.827      -0.066       0.083
-neighbourhood_Jamaica Estates                0.2037      0.183      1.115      0.265      -0.154       0.562
-neighbourhood_Jamaica Hills                  0.2420      0.142      1.709      0.087      -0.036       0.520
-neighbourhood_Kensington                    -0.1389      0.035     -3.943      0.000      -0.208      -0.070
-neighbourhood_Kew Gardens                   -0.1069      0.064     -1.667      0.095      -0.233       0.019
-neighbourhood_Kew Gardens Hills             -0.1224      0.101     -1.214      0.225      -0.320       0.075
-neighbourhood_Kingsbridge                    0.0075      0.092      0.081      0.935      -0.173       0.188
-neighbourhood_Kips Bay                      -0.0868      0.024     -3.668      0.000      -0.133      -0.040
-neighbourhood_Laurelton                      0.0846      0.127      0.666      0.506      -0.165       0.334
-neighbourhood_Lighthouse Hill                0.2914      0.219      1.328      0.184      -0.139       0.721
-neighbourhood_Little Italy                  -0.2044      0.043     -4.725      0.000      -0.289      -0.120
-neighbourhood_Little Neck                    0.2817      0.151      1.867      0.062      -0.014       0.577
-neighbourhood_Long Island City              -0.2736      0.034     -8.088      0.000      -0.340      -0.207
-neighbourhood_Longwood                      -0.1966      0.107     -1.841      0.066      -0.406       0.013
-neighbourhood_Lower East Side               -0.2168      0.019    -11.278      0.000      -0.254      -0.179
-neighbourhood_Manhattan Beach                0.1197      0.170      0.704      0.481      -0.213       0.453
-neighbourhood_Marble Hill                    0.1203      0.180      0.669      0.504      -0.232       0.473
-neighbourhood_Mariners Harbor               -0.0475      0.179     -0.265      0.791      -0.398       0.303
-neighbourhood_Maspeth                       -0.5504      0.042    -13.031      0.000      -0.633      -0.468
-neighbourhood_Melrose                       -0.3891      0.147     -2.646      0.008      -0.677      -0.101
-neighbourhood_Middle Village                -0.3904      0.065     -6.023      0.000      -0.517      -0.263
-neighbourhood_Midland Beach                 -0.2389      0.166     -1.436      0.151      -0.565       0.087
-neighbourhood_Midtown                        0.2730      0.017     16.002      0.000       0.240       0.306
-neighbourhood_Midwood                       -0.0938      0.039     -2.391      0.017      -0.171      -0.017
-neighbourhood_Mill Basin                     0.2278      0.363      0.627      0.531      -0.485       0.940
-neighbourhood_Morningside Heights            0.0189      0.026      0.716      0.474      -0.033       0.071
-neighbourhood_Morris Heights                -0.2726      0.160     -1.708      0.088      -0.585       0.040
-neighbourhood_Morris Park                   -0.0805      0.147     -0.548      0.584      -0.368       0.207
-neighbourhood_Morrisania                    -0.1821      0.148     -1.234      0.217      -0.471       0.107
-neighbourhood_Mott Haven                    -0.3329      0.096     -3.458      0.001      -0.522      -0.144
-neighbourhood_Mount Eden                    -0.4416      0.188     -2.350      0.019      -0.810      -0.073
-neighbourhood_Mount Hope                    -0.3202      0.118     -2.705      0.007      -0.552      -0.088
-neighbourhood_Murray Hill                    0.0304      0.022      1.386      0.166      -0.013       0.073
-neighbourhood_Navy Yard                      0.0295      0.113      0.260      0.795      -0.193       0.252
-neighbourhood_Neponsit                       0.8177      0.115      7.128      0.000       0.593       1.043
-neighbourhood_New Brighton                  -0.1059      0.244     -0.433      0.665      -0.585       0.373
-neighbourhood_New Dorp                      -0.6440      1.912     -0.337      0.736      -4.392       3.104
-neighbourhood_New Dorp Beach                -0.4019      0.135     -2.971      0.003      -0.667      -0.137
-neighbourhood_New Springville               -0.0315      0.134     -0.234      0.815      -0.295       0.232
-neighbourhood_NoHo                           0.1120      0.054      2.075      0.038       0.006       0.218
-neighbourhood_Nolita                        -0.0702      0.029     -2.441      0.015      -0.127      -0.014
-neighbourhood_North Riverdale                0.2202      0.157      1.398      0.162      -0.088       0.529
-neighbourhood_Norwood                        0.0188      0.117      0.160      0.873      -0.211       0.249
-neighbourhood_Oakwood                        0.0856      0.088      0.973      0.330      -0.087       0.258
-neighbourhood_Olinville                      0.1791      0.355      0.504      0.614      -0.517       0.875
-neighbourhood_Ozone Park                    -0.3403      0.042     -8.118      0.000      -0.422      -0.258
-neighbourhood_Park Slope                     0.1007      0.026      3.929      0.000       0.050       0.151
-neighbourhood_Parkchester                   -0.1702      0.113     -1.503      0.133      -0.392       0.052
-neighbourhood_Pelham Bay                     0.0136      0.161      0.084      0.933      -0.302       0.329
-neighbourhood_Pelham Gardens                -0.1014      0.132     -0.766      0.444      -0.361       0.158
-neighbourhood_Port Morris                   -0.3699      0.104     -3.568      0.000      -0.573      -0.167
-neighbourhood_Port Richmond                 -0.2438      0.206     -1.183      0.237      -0.648       0.160
-neighbourhood_Prince's Bay                   0.7086      0.301      2.357      0.018       0.119       1.298
-neighbourhood_Prospect Heights               0.0351      0.028      1.268      0.205      -0.019       0.089
-neighbourhood_Prospect-Lefferts Gardens     -0.1508      0.022     -6.888      0.000      -0.194      -0.108
-neighbourhood_Queens Village                 0.0090      0.061      0.148      0.883      -0.110       0.128
-neighbourhood_Randall Manor                 -0.4575      0.129     -3.554      0.000      -0.710      -0.205
-neighbourhood_Red Hook                      -0.1154      0.055     -2.102      0.036      -0.223      -0.008
-neighbourhood_Rego Park                     -0.3538      0.045     -7.888      0.000      -0.442      -0.266
-neighbourhood_Richmond Hill                 -0.2053      0.043     -4.747      0.000      -0.290      -0.121
-neighbourhood_Richmondtown                  -0.4099      0.564     -0.727      0.467      -1.515       0.696
-neighbourhood_Ridgewood                     -0.5533      0.032    -17.303      0.000      -0.616      -0.491
-neighbourhood_Riverdale                      0.6380      0.367      1.737      0.082      -0.082       1.358
-neighbourhood_Rockaway Beach                 0.2762      0.058      4.763      0.000       0.163       0.390
-neighbourhood_Roosevelt Island              -0.1672      0.042     -3.939      0.000      -0.250      -0.084
-neighbourhood_Rosebank                      -0.1803      0.133     -1.356      0.175      -0.441       0.080
-neighbourhood_Rosedale                       0.1599      0.056      2.864      0.004       0.050       0.269
-neighbourhood_Rossville                      0.0125      0.906      0.014      0.989      -1.763       1.788
-neighbourhood_Schuylerville                 -0.0419      0.134     -0.313      0.754      -0.304       0.221
-neighbourhood_Sea Gate                       0.4531      0.191      2.367      0.018       0.078       0.828
-neighbourhood_Sheepshead Bay                 0.0935      0.043      2.197      0.028       0.010       0.177
-neighbourhood_Shore Acres                    0.1185      0.324      0.365      0.715      -0.517       0.754
-neighbourhood_Silver Lake                   -0.3645      0.427     -0.854      0.393      -1.201       0.472
-neighbourhood_SoHo                           0.0512      0.032      1.620      0.105      -0.011       0.113
-neighbourhood_Soundview                     -0.4847      0.109     -4.432      0.000      -0.699      -0.270
-neighbourhood_South Beach                   -0.0015      0.215     -0.007      0.994      -0.424       0.421
-neighbourhood_South Ozone Park              -0.1249      0.067     -1.867      0.062      -0.256       0.006
-neighbourhood_South Slope                    0.0636      0.027      2.332      0.020       0.010       0.117
-neighbourhood_Springfield Gardens            0.1838      0.049      3.773      0.000       0.088       0.279
-neighbourhood_Spuyten Duyvil                 0.2467      0.382      0.646      0.518      -0.502       0.995
-neighbourhood_St. Albans                     0.0645      0.061      1.062      0.288      -0.055       0.184
-neighbourhood_St. George                    -0.2798      0.106     -2.634      0.008      -0.488      -0.072
-neighbourhood_Stapleton                     -0.2850      0.112     -2.544      0.011      -0.505      -0.065
-neighbourhood_Stuyvesant Town               -0.1674      0.074     -2.267      0.023      -0.312      -0.023
-neighbourhood_Sunnyside                     -0.4968      0.033    -14.987      0.000      -0.562      -0.432
-neighbourhood_Sunset Park                   -0.1872      0.025     -7.611      0.000      -0.235      -0.139
-neighbourhood_Theater District               0.2105      0.030      6.969      0.000       0.151       0.270
-neighbourhood_Throgs Neck                   -0.0195      0.114     -0.171      0.864      -0.242       0.203
-neighbourhood_Todt Hill                      0.1123      0.463      0.242      0.809      -0.796       1.021
-neighbourhood_Tompkinsville                 -0.4281      0.100     -4.287      0.000      -0.624      -0.232
-neighbourhood_Tottenville                    0.7612      0.253      3.012      0.003       0.266       1.256
-neighbourhood_Tremont                       -0.4533      0.140     -3.234      0.001      -0.728      -0.179
-neighbourhood_Tribeca                        0.2372      0.041      5.751      0.000       0.156       0.318
-neighbourhood_Two Bridges                   -0.2932      0.045     -6.491      0.000      -0.382      -0.205
-neighbourhood_Unionport                      0.0358      0.241      0.149      0.882      -0.437       0.509
-neighbourhood_University Heights            -0.1586      0.107     -1.484      0.138      -0.368       0.051
-neighbourhood_Upper East Side                0.0439      0.014      3.085      0.002       0.016       0.072
-neighbourhood_Upper West Side                0.1449      0.016      9.280      0.000       0.114       0.175
-neighbourhood_Van Nest                      -0.1729      0.207     -0.836      0.403      -0.578       0.233
-neighbourhood_Vinegar Hill                   0.1637      0.082      1.999      0.046       0.003       0.324
-neighbourhood_Wakefield                      0.0791      0.104      0.761      0.446      -0.125       0.283
-neighbourhood_Washington Heights             0.0334      0.031      1.085      0.278      -0.027       0.094
-neighbourhood_West Brighton                 -0.2751      0.125     -2.197      0.028      -0.521      -0.030
-neighbourhood_West Farms                     0.1609      0.083      1.938      0.053      -0.002       0.324
-neighbourhood_West Village                   0.0407      0.020      2.020      0.043       0.001       0.080
-neighbourhood_Westchester Square            -0.0422      0.248     -0.171      0.865      -0.528       0.443
-neighbourhood_Westerleigh                   -0.3081      0.130     -2.373      0.018      -0.563      -0.054
-neighbourhood_Whitestone                    -0.0586      0.167     -0.351      0.725      -0.386       0.268
-neighbourhood_Williamsbridge                -0.0238      0.110     -0.217      0.829      -0.240       0.192
-neighbourhood_Williamsburg                   0.0491      0.017      2.894      0.004       0.016       0.082
-neighbourhood_Willowbrook                    0.5897      0.905      0.651      0.515      -1.185       2.364
-neighbourhood_Windsor Terrace                0.0058      0.036      0.160      0.873      -0.066       0.077
-neighbourhood_Woodhaven                     -0.4731      0.044    -10.735      0.000      -0.559      -0.387
-neighbourhood_Woodlawn                      -0.0128      0.183     -0.070      0.944      -0.372       0.347
-neighbourhood_Woodrow                        2.1935      1.956      1.122      0.262      -1.640       6.027
-neighbourhood_Woodside                      -0.4344      0.036    -11.921      0.000      -0.506      -0.363
-room_type_Private room                      -0.6986      0.004   -161.441      0.000      -0.707      -0.690
-room_type_Shared room                       -1.0673      0.017    -61.470      0.000      -1.101      -1.033
+const                                        5.3041      0.089     59.873      0.000       5.130       5.478
+minimum_nights                              -0.0455      0.007     -6.633      0.000      -0.059      -0.032
+number_of_reviews                           -0.0152      0.002     -7.787      0.000      -0.019      -0.011
+reviews_per_month                            0.0091      0.002      3.987      0.000       0.005       0.014
+calculated_host_listings_count              -0.0097      0.002     -4.647      0.000      -0.014      -0.006
+availability_365                             0.0813      0.002     35.744      0.000       0.077       0.086
+center_distance                             -0.2102      0.011    -18.308      0.000      -0.233      -0.188
+year                                        -0.0513      0.003    -16.181      0.000      -0.058      -0.045
+month                                        0.0234      0.003      7.906      0.000       0.018       0.029
+neighbourhood_group_Brooklyn                -0.3653      0.087     -4.194      0.000      -0.536      -0.195
+neighbourhood_group_Manhattan               -0.1537      0.088     -1.738      0.082      -0.327       0.020
+neighbourhood_group_Queens                  -0.0419      0.082     -0.513      0.608      -0.202       0.118
+neighbourhood_group_Staten Island           -0.2045      0.294     -0.696      0.486      -0.780       0.371
+neighbourhood_Arden Heights                  0.0362      0.288      0.126      0.900      -0.529       0.601
+neighbourhood_Arrochar                      -0.2113      0.303     -0.697      0.486      -0.805       0.383
+neighbourhood_Arverne                        0.4319      0.062      6.976      0.000       0.311       0.553
+neighbourhood_Astoria                       -0.3087      0.027    -11.583      0.000      -0.361      -0.256
+neighbourhood_Bath Beach                    -0.0692      0.069     -0.998      0.318      -0.205       0.067
+neighbourhood_Battery Park City             -0.0630      0.063     -1.006      0.315      -0.186       0.060
+neighbourhood_Bay Ridge                     -0.0942      0.035     -2.723      0.006      -0.162      -0.026
+neighbourhood_Bay Terrace                    0.4435      0.134      3.301      0.001       0.180       0.707
+neighbourhood_Bay Terrace, Staten Island     0.1611      0.701      0.230      0.818      -1.213       1.535
+neighbourhood_Baychester                     0.0646      0.121      0.533      0.594      -0.173       0.302
+neighbourhood_Bayside                        0.0892      0.078      1.150      0.250      -0.063       0.241
+neighbourhood_Bayswater                      0.2627      0.079      3.343      0.001       0.109       0.417
+neighbourhood_Bedford-Stuyvesant            -0.1665      0.015    -11.444      0.000      -0.195      -0.138
+neighbourhood_Belle Harbor                   0.5409      0.228      2.375      0.018       0.095       0.987
+neighbourhood_Bellerose                      0.4289      0.130      3.311      0.001       0.175       0.683
+neighbourhood_Belmont                       -0.1250      0.145     -0.863      0.388      -0.409       0.159
+neighbourhood_Bensonhurst                   -0.1301      0.046     -2.852      0.004      -0.220      -0.041
+neighbourhood_Bergen Beach                   0.0295      0.149      0.198      0.843      -0.263       0.322
+neighbourhood_Boerum Hill                    0.0297      0.032      0.921      0.357      -0.034       0.093
+neighbourhood_Borough Park                  -0.2950      0.028    -10.652      0.000      -0.349      -0.241
+neighbourhood_Breezy Point                   1.3342      0.078     17.065      0.000       1.181       1.487
+neighbourhood_Briarwood                     -0.0579      0.072     -0.799      0.424      -0.200       0.084
+neighbourhood_Brighton Beach                 0.2139      0.046      4.626      0.000       0.123       0.305
+neighbourhood_Bronxdale                     -0.3559      0.096     -3.718      0.000      -0.544      -0.168
+neighbourhood_Brooklyn Heights              -0.0058      0.037     -0.159      0.874      -0.078       0.066
+neighbourhood_Brownsville                   -0.1584      0.045     -3.486      0.000      -0.247      -0.069
+neighbourhood_Bull's Head                   -0.1444      0.306     -0.472      0.637      -0.744       0.456
+neighbourhood_Bushwick                      -0.1585      0.014    -11.130      0.000      -0.186      -0.131
+neighbourhood_Cambria Heights                0.2305      0.092      2.504      0.012       0.050       0.411
+neighbourhood_Canarsie                      -0.0100      0.037     -0.268      0.788      -0.083       0.063
+neighbourhood_Carroll Gardens                0.0260      0.031      0.835      0.404      -0.035       0.087
+neighbourhood_Castle Hill                   -0.4908      0.105     -4.668      0.000      -0.697      -0.285
+neighbourhood_Castleton Corners              0.1832      0.515      0.356      0.722      -0.827       1.193
+neighbourhood_Chelsea                        0.0653      0.015      4.314      0.000       0.036       0.095
+neighbourhood_Chinatown                     -0.2372      0.023    -10.485      0.000      -0.282      -0.193
+neighbourhood_City Island                    0.2280      0.117      1.949      0.051      -0.001       0.457
+neighbourhood_Civic Center                  -0.2248      0.060     -3.718      0.000      -0.343      -0.106
+neighbourhood_Claremont Village             -0.1656      0.124     -1.339      0.180      -0.408       0.077
+neighbourhood_Clason Point                  -0.0404      0.144     -0.280      0.779      -0.323       0.242
+neighbourhood_Clifton                       -0.1325      0.322     -0.411      0.681      -0.764       0.499
+neighbourhood_Clinton Hill                  -0.0167      0.023     -0.728      0.467      -0.062       0.028
+neighbourhood_Co-op City                     0.3109      0.083      3.769      0.000       0.149       0.473
+neighbourhood_Cobble Hill                    0.0522      0.039      1.322      0.186      -0.025       0.130
+neighbourhood_College Point                 -0.2707      0.098     -2.749      0.006      -0.464      -0.078
+neighbourhood_Columbia St                   -0.1044      0.054     -1.939      0.052      -0.210       0.001
+neighbourhood_Concord                       -0.3862      0.295     -1.307      0.191      -0.965       0.193
+neighbourhood_Concourse                     -0.2812      0.100     -2.826      0.005      -0.476      -0.086
+neighbourhood_Concourse Village             -0.2551      0.100     -2.542      0.011      -0.452      -0.058
+neighbourhood_Coney Island                   0.3056      0.138      2.208      0.027       0.034       0.577
+neighbourhood_Corona                        -0.5134      0.046    -11.229      0.000      -0.603      -0.424
+neighbourhood_Crown Heights                 -0.1225      0.016     -7.509      0.000      -0.154      -0.091
+neighbourhood_Cypress Hills                 -0.1246      0.039     -3.205      0.001      -0.201      -0.048
+neighbourhood_DUMBO                          0.2431      0.068      3.581      0.000       0.110       0.376
+neighbourhood_Ditmars Steinway              -0.3003      0.030     -9.965      0.000      -0.359      -0.241
+neighbourhood_Dongan Hills                  -0.1246      0.315     -0.396      0.692      -0.741       0.492
+neighbourhood_Douglaston                     0.1564      0.110      1.425      0.154      -0.059       0.371
+neighbourhood_Downtown Brooklyn              0.0025      0.043      0.058      0.954      -0.081       0.086
+neighbourhood_Dyker Heights                 -0.1334      0.133     -1.005      0.315      -0.394       0.127
+neighbourhood_East Elmhurst                 -0.3619      0.030    -12.097      0.000      -0.421      -0.303
+neighbourhood_East Flatbush                 -0.1478      0.023     -6.485      0.000      -0.192      -0.103
+neighbourhood_East Harlem                    0.0505      0.019      2.723      0.006       0.014       0.087
+neighbourhood_East Morrisania               -0.0109      0.175     -0.062      0.951      -0.354       0.332
+neighbourhood_East New York                 -0.0929      0.033     -2.850      0.004      -0.157      -0.029
+neighbourhood_East Village                  -0.1110      0.014     -7.699      0.000      -0.139      -0.083
+neighbourhood_Eastchester                    0.3796      0.148      2.570      0.010       0.090       0.669
+neighbourhood_Edenwald                       0.1174      0.149      0.786      0.432      -0.175       0.410
+neighbourhood_Edgemere                       0.1867      0.159      1.174      0.240      -0.125       0.498
+neighbourhood_Elmhurst                      -0.3720      0.036    -10.374      0.000      -0.442      -0.302
+neighbourhood_Eltingville                    0.4544      0.611      0.743      0.457      -0.744       1.653
+neighbourhood_Emerson Hill                  -0.1175      0.379     -0.310      0.757      -0.861       0.626
+neighbourhood_Far Rockaway                   0.2839      0.112      2.542      0.011       0.065       0.503
+neighbourhood_Fieldston                      0.1080      0.122      0.888      0.375      -0.130       0.346
+neighbourhood_Financial District            -0.0889      0.021     -4.246      0.000      -0.130      -0.048
+neighbourhood_Flatbush                      -0.1576      0.020     -7.803      0.000      -0.197      -0.118
+neighbourhood_Flatiron District              0.1350      0.043      3.150      0.002       0.051       0.219
+neighbourhood_Flatlands                      0.0159      0.053      0.299      0.765      -0.088       0.120
+neighbourhood_Flushing                      -0.0656      0.024     -2.685      0.007      -0.114      -0.018
+neighbourhood_Fordham                       -0.1076      0.095     -1.133      0.257      -0.294       0.079
+neighbourhood_Forest Hills                  -0.1463      0.041     -3.556      0.000      -0.227      -0.066
+neighbourhood_Fort Greene                   -0.0181      0.024     -0.756      0.450      -0.065       0.029
+neighbourhood_Fort Hamilton                 -0.0257      0.051     -0.502      0.616      -0.126       0.075
+neighbourhood_Fresh Meadows                  0.0187      0.087      0.214      0.831      -0.153       0.190
+neighbourhood_Glendale                      -0.4848      0.064     -7.611      0.000      -0.610      -0.360
+neighbourhood_Gowanus                        0.0626      0.030      2.062      0.039       0.003       0.122
+neighbourhood_Gramercy                      -0.0521      0.022     -2.366      0.018      -0.095      -0.009
+neighbourhood_Graniteville                  -0.4345      0.442     -0.983      0.326      -1.301       0.432
+neighbourhood_Grant City                    -0.5183      0.293     -1.771      0.077      -1.092       0.055
+neighbourhood_Gravesend                     -0.0192      0.051     -0.374      0.709      -0.120       0.081
+neighbourhood_Great Kills                    0.3621      0.360      1.005      0.315      -0.344       1.069
+neighbourhood_Greenpoint                     0.0134      0.019      0.703      0.482      -0.024       0.051
+neighbourhood_Greenwich Village              0.0244      0.023      1.056      0.291      -0.021       0.070
+neighbourhood_Grymes Hill                    0.2208      0.319      0.693      0.488      -0.404       0.845
+neighbourhood_Harlem                         0.0582      0.020      2.899      0.004       0.019       0.098
+neighbourhood_Hell's Kitchen                 0.1286      0.012     10.605      0.000       0.105       0.152
+neighbourhood_Highbridge                    -0.3263      0.128     -2.558      0.011      -0.576      -0.076
+neighbourhood_Hollis                         0.2093      0.109      1.929      0.054      -0.003       0.422
+neighbourhood_Holliswood                     0.7494      0.284      2.635      0.008       0.192       1.307
+neighbourhood_Howard Beach                  -0.1011      0.095     -1.060      0.289      -0.288       0.086
+neighbourhood_Howland Hook                  -0.1201      0.307     -0.391      0.696      -0.723       0.482
+neighbourhood_Huguenot                       0.3081      0.443      0.696      0.486      -0.559       1.175
+neighbourhood_Hunts Point                   -0.5095      0.102     -5.018      0.000      -0.708      -0.310
+neighbourhood_Inwood                         0.1308      0.040      3.237      0.001       0.052       0.210
+neighbourhood_Jackson Heights               -0.3389      0.032    -10.463      0.000      -0.402      -0.275
+neighbourhood_Jamaica                        0.0045      0.037      0.121      0.904      -0.069       0.078
+neighbourhood_Jamaica Estates                0.0889      0.135      0.657      0.511      -0.177       0.354
+neighbourhood_Jamaica Hills                  0.2471      0.145      1.704      0.088      -0.037       0.531
+neighbourhood_Kensington                    -0.1398      0.035     -4.051      0.000      -0.207      -0.072
+neighbourhood_Kew Gardens                   -0.0906      0.065     -1.384      0.166      -0.219       0.038
+neighbourhood_Kew Gardens Hills             -0.1096      0.102     -1.075      0.282      -0.309       0.090
+neighbourhood_Kingsbridge                    0.0099      0.092      0.108      0.914      -0.170       0.190
+neighbourhood_Kips Bay                      -0.0859      0.021     -4.029      0.000      -0.128      -0.044
+neighbourhood_Laurelton                      0.0857      0.126      0.678      0.498      -0.162       0.334
+neighbourhood_Lighthouse Hill                0.3889      0.363      1.071      0.284      -0.323       1.101
+neighbourhood_Little Italy                  -0.2112      0.038     -5.612      0.000      -0.285      -0.137
+neighbourhood_Little Neck                    0.2735      0.155      1.760      0.078      -0.031       0.578
+neighbourhood_Long Island City              -0.2571      0.032     -7.916      0.000      -0.321      -0.193
+neighbourhood_Longwood                      -0.2236      0.099     -2.266      0.023      -0.417      -0.030
+neighbourhood_Lower East Side               -0.1959      0.018    -10.894      0.000      -0.231      -0.161
+neighbourhood_Manhattan Beach                0.1293      0.169      0.766      0.444      -0.202       0.460
+neighbourhood_Marble Hill                    0.1346      0.179      0.754      0.451      -0.215       0.485
+neighbourhood_Mariners Harbor                0.0435      0.328      0.133      0.894      -0.599       0.686
+neighbourhood_Maspeth                       -0.5254      0.042    -12.651      0.000      -0.607      -0.444
+neighbourhood_Melrose                       -0.3730      0.145     -2.575      0.010      -0.657      -0.089
+neighbourhood_Middle Village                -0.3641      0.065     -5.580      0.000      -0.492      -0.236
+neighbourhood_Midland Beach                 -0.1300      0.316     -0.411      0.681      -0.750       0.490
+neighbourhood_Midtown                        0.2077      0.015     13.596      0.000       0.178       0.238
+neighbourhood_Midwood                       -0.0877      0.039     -2.243      0.025      -0.164      -0.011
+neighbourhood_Mill Basin                     0.2579      0.368      0.701      0.483      -0.463       0.979
+neighbourhood_Morningside Heights            0.0336      0.025      1.328      0.184      -0.016       0.083
+neighbourhood_Morris Heights                -0.2591      0.161     -1.611      0.107      -0.574       0.056
+neighbourhood_Morris Park                   -0.0823      0.146     -0.563      0.573      -0.369       0.204
+neighbourhood_Morrisania                    -0.1644      0.148     -1.112      0.266      -0.454       0.125
+neighbourhood_Mott Haven                    -0.3201      0.096     -3.344      0.001      -0.508      -0.132
+neighbourhood_Mount Eden                    -0.4423      0.191     -2.317      0.020      -0.816      -0.068
+neighbourhood_Mount Hope                    -0.3132      0.119     -2.632      0.008      -0.547      -0.080
+neighbourhood_Murray Hill                    0.0337      0.019      1.734      0.083      -0.004       0.072
+neighbourhood_Navy Yard                      0.0480      0.111      0.431      0.667      -0.170       0.266
+neighbourhood_Neponsit                       0.8386      0.125      6.718      0.000       0.594       1.083
+neighbourhood_New Brighton                  -0.0210      0.368     -0.057      0.955      -0.742       0.700
+neighbourhood_New Dorp                      -0.5477      0.944     -0.580      0.562      -2.398       1.303
+neighbourhood_New Dorp Beach                -0.3078      0.303     -1.016      0.310      -0.902       0.286
+neighbourhood_New Springville                0.0432      0.303      0.142      0.887      -0.551       0.637
+neighbourhood_NoHo                           0.1163      0.051      2.281      0.023       0.016       0.216
+neighbourhood_Nolita                        -0.0446      0.027     -1.629      0.103      -0.098       0.009
+neighbourhood_North Riverdale                0.2120      0.154      1.378      0.168      -0.090       0.514
+neighbourhood_Norwood                        0.0201      0.117      0.171      0.864      -0.209       0.250
+neighbourhood_Oakwood                        0.1709      0.285      0.599      0.549      -0.388       0.730
+neighbourhood_Olinville                      0.1752      0.353      0.496      0.620      -0.517       0.867
+neighbourhood_Ozone Park                    -0.3240      0.042     -7.758      0.000      -0.406      -0.242
+neighbourhood_Park Slope                     0.0778      0.023      3.343      0.001       0.032       0.123
+neighbourhood_Parkchester                   -0.1674      0.113     -1.485      0.138      -0.388       0.054
+neighbourhood_Pelham Bay                     0.0278      0.161      0.173      0.863      -0.287       0.343
+neighbourhood_Pelham Gardens                -0.1004      0.133     -0.757      0.449      -0.360       0.159
+neighbourhood_Port Morris                   -0.3539      0.103     -3.430      0.001      -0.556      -0.152
+neighbourhood_Port Richmond                 -0.1498      0.340     -0.441      0.659      -0.815       0.516
+neighbourhood_Prince's Bay                   0.7870      0.409      1.926      0.054      -0.014       1.588
+neighbourhood_Prospect Heights               0.0245      0.026      0.951      0.341      -0.026       0.075
+neighbourhood_Prospect-Lefferts Gardens     -0.1598      0.020     -7.813      0.000      -0.200      -0.120
+neighbourhood_Queens Village                 0.0090      0.060      0.150      0.880      -0.109       0.127
+neighbourhood_Randall Manor                 -0.3522      0.301     -1.171      0.242      -0.942       0.237
+neighbourhood_Red Hook                      -0.1152      0.052     -2.227      0.026      -0.217      -0.014
+neighbourhood_Rego Park                     -0.3425      0.045     -7.631      0.000      -0.430      -0.255
+neighbourhood_Richmond Hill                 -0.1940      0.043     -4.511      0.000      -0.278      -0.110
+neighbourhood_Richmondtown                  -0.3096      1.865     -0.166      0.868      -3.965       3.346
+neighbourhood_Ridgewood                     -0.5363      0.031    -17.351      0.000      -0.597      -0.476
+neighbourhood_Riverdale                      0.1644      0.160      1.025      0.305      -0.150       0.479
+neighbourhood_Rockaway Beach                 0.2595      0.053      4.879      0.000       0.155       0.364
+neighbourhood_Roosevelt Island              -0.1415      0.042     -3.344      0.001      -0.224      -0.059
+neighbourhood_Rosebank                      -0.0829      0.302     -0.274      0.784      -0.675       0.509
+neighbourhood_Rosedale                       0.1539      0.056      2.772      0.006       0.045       0.263
+neighbourhood_Rossville                      0.0833     11.281      0.007      0.994     -22.026      22.193
+neighbourhood_Schuylerville                 -0.0469      0.135     -0.348      0.728      -0.311       0.217
+neighbourhood_Sea Gate                       0.4536      0.185      2.448      0.014       0.090       0.817
+neighbourhood_Sheepshead Bay                 0.0832      0.040      2.106      0.035       0.006       0.161
+neighbourhood_Shore Acres                    0.2187      0.421      0.520      0.603      -0.606       1.043
+neighbourhood_Silver Lake                   -0.2844      0.477     -0.596      0.551      -1.219       0.650
+neighbourhood_SoHo                          -0.0022      0.028     -0.078      0.937      -0.058       0.053
+neighbourhood_Soundview                     -0.4800      0.108     -4.429      0.000      -0.692      -0.268
+neighbourhood_South Beach                    0.0838      0.346      0.242      0.809      -0.595       0.762
+neighbourhood_South Ozone Park              -0.1182      0.066     -1.783      0.075      -0.248       0.012
+neighbourhood_South Slope                    0.0773      0.027      2.850      0.004       0.024       0.130
+neighbourhood_Springfield Gardens            0.1799      0.048      3.727      0.000       0.085       0.275
+neighbourhood_Spuyten Duyvil                 0.2562      0.381      0.673      0.501      -0.490       1.002
+neighbourhood_St. Albans                     0.0487      0.058      0.836      0.403      -0.066       0.163
+neighbourhood_St. George                    -0.2166      0.289     -0.750      0.453      -0.783       0.350
+neighbourhood_Stapleton                     -0.1850      0.294     -0.630      0.529      -0.760       0.390
+neighbourhood_Stuyvesant Town               -0.1830      0.054     -3.404      0.001      -0.288      -0.078
+neighbourhood_Sunnyside                     -0.4832      0.032    -15.224      0.000      -0.545      -0.421
+neighbourhood_Sunset Park                   -0.1830      0.024     -7.633      0.000      -0.230      -0.136
+neighbourhood_Theater District               0.1829      0.026      7.113      0.000       0.133       0.233
+neighbourhood_Throgs Neck                   -0.0135      0.113     -0.119      0.905      -0.235       0.208
+neighbourhood_Todt Hill                      0.2009      0.535      0.376      0.707      -0.848       1.249
+neighbourhood_Tompkinsville                 -0.3329      0.289     -1.153      0.249      -0.899       0.233
+neighbourhood_Tottenville                    0.8462      0.371      2.280      0.023       0.119       1.574
+neighbourhood_Tremont                       -0.4510      0.140     -3.228      0.001      -0.725      -0.177
+neighbourhood_Tribeca                        0.1669      0.035      4.724      0.000       0.098       0.236
+neighbourhood_Two Bridges                   -0.2543      0.045     -5.711      0.000      -0.342      -0.167
+neighbourhood_Unionport                      0.0590      0.244      0.242      0.809      -0.418       0.536
+neighbourhood_University Heights            -0.1570      0.105     -1.492      0.136      -0.363       0.049
+neighbourhood_Upper East Side                0.0573      0.013      4.346      0.000       0.031       0.083
+neighbourhood_Upper West Side                0.1424      0.014      9.881      0.000       0.114       0.171
+neighbourhood_Van Nest                      -0.1656      0.213     -0.779      0.436      -0.582       0.251
+neighbourhood_Vinegar Hill                   0.1559      0.079      1.978      0.048       0.001       0.310
+neighbourhood_Wakefield                      0.0806      0.104      0.775      0.438      -0.123       0.284
+neighbourhood_Washington Heights             0.0422      0.029      1.457      0.145      -0.015       0.099
+neighbourhood_West Brighton                 -0.1746      0.299     -0.584      0.559      -0.760       0.411
+neighbourhood_West Farms                     0.1822      0.082      2.210      0.027       0.021       0.344
+neighbourhood_West Village                   0.0314      0.018      1.790      0.074      -0.003       0.066
+neighbourhood_Westchester Square            -0.2361      0.141     -1.673      0.094      -0.513       0.041
+neighbourhood_Westerleigh                   -0.2211      0.310     -0.713      0.476      -0.829       0.387
+neighbourhood_Whitestone                    -0.0507      0.170     -0.298      0.766      -0.384       0.283
+neighbourhood_Williamsbridge                -0.0161      0.110     -0.146      0.884      -0.232       0.200
+neighbourhood_Williamsburg                   0.0493      0.016      2.997      0.003       0.017       0.081
+neighbourhood_Willowbrook                    0.7083      0.830      0.853      0.394      -0.919       2.336
+neighbourhood_Windsor Terrace                0.0198      0.036      0.544      0.586      -0.051       0.091
+neighbourhood_Woodhaven                     -0.4577      0.044    -10.465      0.000      -0.543      -0.372
+neighbourhood_Woodlawn                      -0.0267      0.182     -0.147      0.883      -0.383       0.329
+neighbourhood_Woodside                      -0.4225      0.036    -11.787      0.000      -0.493      -0.352
+room_type_Private room                      -0.6795      0.004   -167.608      0.000      -0.687      -0.672
+room_type_Shared room                       -1.0476      0.016    -64.239      0.000      -1.080      -1.016
 ==============================================================================
-Omnibus:                     6852.783   Durbin-Watson:                   1.905
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            18930.395
-Skew:                           0.771   Prob(JB):                         0.00
-Kurtosis:                       5.638   Cond. No.                     3.46e+16
+Omnibus:                     3315.974   Durbin-Watson:                   1.927
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             7367.913
+Skew:                           0.452   Prob(JB):                         0.00
+Kurtosis:                       4.697   Cond. No.                     1.48e+16
 ==============================================================================
 
 Notes:
 [1] Standard Errors are heteroscedasticity robust (HC3)
-[2] The smallest eigenvalue is 8.9e-29. This might indicate that there are
+[2] The smallest eigenvalue is 4.78e-28. This might indicate that there are
 strong multicollinearity problems or that the design matrix is singular.
 ```

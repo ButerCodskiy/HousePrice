@@ -7,20 +7,30 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.base import clone
 from sklearn.metrics import mean_squared_error, r2_score
-from sklearn.ensemble import StackingRegressor, RandomForestRegressor
+from sklearn.ensemble import StackingRegressor, RandomForestRegressor, HistGradientBoostingRegressor
+from sklearn.linear_model import RidgeCV
 from sklearn.neighbors import KNeighborsRegressor
+from sklearn.feature_extraction.text import TfidfVectorizer
 import lightgbm as lgb
 import optuna
 
 def get_preprocessor(X_train):
-    """Возвращает ColumnTransformer для предобработки числовых и категориальных признаков."""
+    """Возвращает ColumnTransformer для предобработки числовых, категориальных и текстовых признаков."""
     num_cols = X_train.select_dtypes(include=np.number).columns.tolist()
     cat_cols = X_train.select_dtypes(include=["object", "category", "string"]).columns.tolist()
+    if "name" in cat_cols:
+        cat_cols.remove("name")
+    
+    transformers = [
+        ("num", StandardScaler(), num_cols),
+        ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols)
+    ]
+    
+    if "name" in X_train.columns:
+        transformers.append(("text", TfidfVectorizer(max_features=150, stop_words="english"), "name"))
+        
     preprocessor = ColumnTransformer(
-        transformers=[
-            ("num", StandardScaler(), num_cols),
-            ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols)
-        ],
+        transformers=transformers,
         verbose_feature_names_out=False
     )
     return preprocessor
@@ -93,28 +103,28 @@ def optimize_lgbm(X_train, y_train, preprocessor):
     return study.best_params
 
 def train_stacked_model(X_train, y_train, preprocessor):
-    """Обучает стековую модель (StackingRegressor)."""
+    """Обучает стековую модель (StackingRegressor) с мощным ансамблем и линейной мета-моделью."""
     base_models = [
-        ("ridge", Ridge(alpha=1, max_iter=1000, solver="auto", random_state=42)),
-        ("rf", RandomForestRegressor(
-            n_estimators=237,
-            max_depth=27,
-            min_samples_split=17,
-            min_samples_leaf=2,
-            max_features="sqrt",
-            random_state=42,
-            n_jobs=-1
+        ("ridge", Ridge(alpha=10, max_iter=1000, solver="auto", random_state=42)),
+        ("hgb", HistGradientBoostingRegressor(
+            max_iter=300,
+            learning_rate=0.05,
+            max_depth=15,
+            min_samples_leaf=20,
+            l2_regularization=0.1,
+            random_state=42
         )),
         ("lgb", lgb.LGBMRegressor(
-            learning_rate=0.068,
-            num_leaves=31,
-            max_depth=5,
+            learning_rate=0.05,
+            num_leaves=63,
+            max_depth=10,
             min_data_in_leaf=20,
-            feature_fraction=0.79,
-            bagging_fraction=0.86,
+            feature_fraction=0.8,
+            bagging_fraction=0.8,
             bagging_freq=5,
             lambda_l1=0.1,
-            n_estimators=100,
+            lambda_l2=0.1,
+            n_estimators=300,
             random_state=42,
             verbose=-1
         ))
@@ -122,13 +132,8 @@ def train_stacked_model(X_train, y_train, preprocessor):
 
     stacked_model = StackingRegressor(
         estimators=base_models,
-        final_estimator=KNeighborsRegressor(
-            n_neighbors=9,
-            weights="distance",
-            metric="euclidean",
-            n_jobs=-1
-        ),
-        cv=3,
+        final_estimator=RidgeCV(alphas=[0.1, 1.0, 10.0]),
+        cv=5,
         n_jobs=-1,
         passthrough=False
     )

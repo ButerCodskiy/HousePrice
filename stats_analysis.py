@@ -19,6 +19,9 @@ def run_econometric_analysis():
     
     # 1. Избегаем Dummy Variable Trap
     print("Кодирование категориальных признаков (drop_first=True)...")
+    if "name" in X.columns:
+        X = X.drop(columns=["name"])
+        
     # Преобразуем строковые категории в dummy-переменные (drop_first=True уберет строгую мультиколлинеарность)
     X_encoded = pd.get_dummies(X, drop_first=True, dtype=float)
     
