@@ -1,14 +1,14 @@
 import pandas as pd
 from geopy.distance import geodesic
 
-def create_price_per_night(df):
-    df["price_per_night"] = df["price"] / df["minimum_nights"]
-    return df
+
 
 def calculate_center_distance(df):
     centr = (40.7128, -74.0060)
 
     def dist(row):
+        if pd.isna(row["latitude"]) or pd.isna(row["longitude"]):
+            return -1.0
         n = (row["latitude"], row["longitude"])
         return geodesic(n, centr).kilometers
 

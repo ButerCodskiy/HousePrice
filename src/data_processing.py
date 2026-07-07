@@ -12,3 +12,7 @@ def preprocess_data(df):
 
     return df
 
+def remove_outliers(df):
+    # Оставляем объекты с разумной ценой (без нулей и экстремальных выбросов)
+    return df[(df["price"] >= 10) & (df["price"] <= 1000)]
+

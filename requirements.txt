@@ -6,3 +6,6 @@ optuna
 matplotlib
 seaborn
 
+geopy
+statsmodels
+tabulate

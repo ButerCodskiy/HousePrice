@@ -5,6 +5,7 @@ from sklearn.linear_model import Ridge
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.base import clone
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.ensemble import StackingRegressor, RandomForestRegressor
 from sklearn.neighbors import KNeighborsRegressor
@@ -13,12 +14,12 @@ import optuna
 
 def get_preprocessor(X_train):
     """Возвращает ColumnTransformer для предобработки числовых и категориальных признаков."""
-    num_cols = X_train.select_dtypes(include=np.number).columns
-    cat_cols = X_train.select_dtypes(include=["object", "category"]).columns
+    num_cols = X_train.select_dtypes(include=np.number).columns.tolist()
+    cat_cols = X_train.select_dtypes(include=["object", "category", "string"]).columns.tolist()
     preprocessor = ColumnTransformer(
         transformers=[
             ("num", StandardScaler(), num_cols),
-            ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols)
+            ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols)
         ],
         verbose_feature_names_out=False
     )
@@ -64,8 +65,9 @@ def optimize_lgbm(X_train, y_train, preprocessor):
         for fold_idx, (train_idx, val_idx) in enumerate(kf.split(X_train)):
             X_tr, y_tr = X_train.iloc[train_idx], y_train.iloc[train_idx]
             X_val, y_val = X_train.iloc[val_idx], y_train.iloc[val_idx]
-            X_tr_processed = preprocessor.fit_transform(X_tr)
-            X_val_processed = preprocessor.transform(X_val)
+            preprocessor_fold = clone(preprocessor)
+            X_tr_processed = preprocessor_fold.fit_transform(X_tr)
+            X_val_processed = preprocessor_fold.transform(X_val)
             model = lgb.LGBMRegressor(**params)
             model.fit(X_tr_processed, y_tr)
             preds = model.predict(X_val_processed)
@@ -128,7 +130,7 @@ def train_stacked_model(X_train, y_train, preprocessor):
         ),
         cv=3,
         n_jobs=-1,
-        passthrough=True
+        passthrough=False
     )
 
     final_pipeline = Pipeline([
